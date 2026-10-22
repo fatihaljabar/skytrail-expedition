@@ -1,0 +1,26 @@
+# Place files (map lives in Studio / Roblox cloud, not git)
+*.rbxl
+*.rbxlx
+*.rbxl.lock
+*.rbxlx.lock
+
+sourcemap.json
+
+# Downloaded / generated tooling files
+globalTypes.d.luau
+roblox.yml
+Packages/
+ServerPackages/
+
+# Local working docs (only README is public)
+*.md
+!README.md
+.claude/
+
+# Raw 3D asset sources (Tripo exports)
+*.glb
+*.gltf
+*.fbx
+*.obj
+
+.DS_Store
