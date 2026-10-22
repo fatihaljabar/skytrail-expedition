@@ -133,6 +133,8 @@ local function watch(player: Player)
 end
 
 function Checkpoints.Start()
+	Players.RespawnTime = Config.RespawnSeconds
+
 	CollectionService:GetInstanceAddedSignal(Tags.Checkpoint):Connect(register)
 	for _, instance in CollectionService:GetTagged(Tags.Checkpoint) do
 		register(instance)
