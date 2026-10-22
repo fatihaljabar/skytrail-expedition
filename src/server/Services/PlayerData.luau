@@ -61,6 +61,24 @@ function PlayerData.Get(player: Player): Types.PlayerData?
 	return profile and profile.Data
 end
 
+-- Yields until the player's data is loaded; nil if the player leaves or the load fails first.
+function PlayerData.WaitFor(player: Player): Types.PlayerData?
+	while player.Parent == Players and not profiles[player] do
+		task.wait()
+	end
+	return PlayerData.Get(player)
+end
+
+-- Progress of one world, created with defaults on first access.
+function PlayerData.GetWorld(data: Types.PlayerData, world: string): Types.WorldProgress
+	local progress = data.Worlds[world]
+	if not progress then
+		progress = { Checkpoint = 0, Completed = false }
+		data.Worlds[world] = progress
+	end
+	return progress
+end
+
 function PlayerData.AddCoins(player: Player, amount: number): boolean
 	local data = PlayerData.Get(player)
 	if not data or not addCoins(data, amount) then
