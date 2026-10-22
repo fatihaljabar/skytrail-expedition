@@ -141,8 +141,6 @@ function ChoicePrompt.Start()
 		end
 		gui.Enabled = state.NeedsChoice
 	end)
-
-	Remotes.RequestState:FireServer()
 end
 
 return ChoicePrompt
