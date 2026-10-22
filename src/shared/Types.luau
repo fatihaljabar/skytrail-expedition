@@ -15,6 +15,12 @@ export type PlayerData = {
 	ProcessedPurchases: { string }, -- last PurchaseIds, capped by Config.ProcessedPurchasesKept
 }
 
+-- Payload of the StateChanged remote (server to client).
+export type StateChanged = {
+	Checkpoint: number, -- position of the current run in the world, 0 = in the hub
+	NeedsChoice: boolean, -- true while the player must pick Continue or Start over
+}
+
 -- Every service (server) and controller (client) follows this shape.
 export type Module = {
 	Init: (() -> ())?, -- must not yield
