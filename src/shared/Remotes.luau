@@ -8,4 +8,7 @@ local folder = ReplicatedStorage:WaitForChild("Remotes")
 return table.freeze({
 	RequestReset = folder:WaitForChild("RequestReset") :: RemoteEvent,
 	StateChanged = folder:WaitForChild("StateChanged") :: RemoteEvent,
+	RequestState = folder:WaitForChild("RequestState") :: RemoteEvent,
+	RequestContinue = folder:WaitForChild("RequestContinue") :: RemoteEvent,
+	RequestStartOver = folder:WaitForChild("RequestStartOver") :: RemoteEvent,
 })
