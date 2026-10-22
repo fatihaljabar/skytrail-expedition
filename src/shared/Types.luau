@@ -1,0 +1,24 @@
+-- Shared types. PlayerData mirrors Technical.md section 6.
+export type WorldProgress = {
+	Checkpoint: number, -- position of the current run, 0 = in the hub
+	Completed: boolean,
+	BestTime: number?,
+}
+
+export type PlayerData = {
+	DataVersion: number,
+	Coins: number,
+	Worlds: { [string]: WorldProgress },
+	Relics: { [string]: boolean }, -- key: RelicId
+	Cosmetics: { Owned: { [string]: boolean }, Equipped: string? },
+	Stats: { Deaths: number, Completions: number, Skips: number },
+	ProcessedPurchases: { string }, -- last PurchaseIds, capped by Config.ProcessedPurchasesKept
+}
+
+-- Every service (server) and controller (client) follows this shape.
+export type Module = {
+	Init: (() -> ())?, -- must not yield
+	Start: () -> (),
+}
+
+return {}
