@@ -36,9 +36,22 @@ local function hasChosen(player: Player, data: Types.PlayerData): boolean
 	return decision
 end
 
+-- The client cannot count checkpoints itself: with StreamingEnabled it may not have them all loaded.
+local function totalStages(world: string): number
+	local highest = 0
+	local stages = checkpoints[world]
+	if stages then
+		for stage in stages do
+			highest = math.max(highest, stage)
+		end
+	end
+	return highest
+end
+
 local function pushState(player: Player, data: Types.PlayerData)
 	local state: Types.StateChanged = {
 		Checkpoint = PlayerData.GetWorld(data, Config.World).Checkpoint,
+		TotalStages = totalStages(Config.World),
 		NeedsChoice = chosen[player] == false,
 	}
 	Remotes.StateChanged:FireClient(player, state)
@@ -92,10 +105,7 @@ end
 -- Every stage from 1 to the highest must exist, otherwise players could get stuck.
 local function validateSequences()
 	for world, stages in checkpoints do
-		local highest = 0
-		for stage in stages do
-			highest = math.max(highest, stage)
-		end
+		local highest = totalStages(world)
 		for stage = 1, highest do
 			if not stages[stage] then
 				warn(`[Checkpoints] World "{world}" is missing Stage {stage} (highest is {highest})`)

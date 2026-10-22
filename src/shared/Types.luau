@@ -18,6 +18,7 @@ export type PlayerData = {
 -- Payload of the StateChanged remote (server to client).
 export type StateChanged = {
 	Checkpoint: number, -- position of the current run in the world, 0 = in the hub
+	TotalStages: number, -- highest stage in the world, 0 when the map has no checkpoints yet
 	NeedsChoice: boolean, -- true while the player must pick Continue or Start over
 }
 
