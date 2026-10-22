@@ -16,6 +16,7 @@ return table.freeze({
 		DeathsBeforeOffer = 5, -- tunable
 	}),
 
+	RespawnSeconds = 1, -- tunable; Roblox's default of 5 is too slow for an obby
 	ResetCooldownSeconds = 2,
 	ProcessedPurchasesKept = 50,
 })

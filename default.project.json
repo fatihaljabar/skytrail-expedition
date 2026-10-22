@@ -46,7 +46,8 @@
 
     "Workspace": {
       "$properties": {
-        "StreamingEnabled": true
+        "StreamingEnabled": true,
+        "FallenPartsDestroyHeight": -100
       }
     },
 
