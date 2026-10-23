@@ -6,4 +6,5 @@ return table.freeze({
 	FallingPlatform = "FallingPlatform",
 	Relic = "Relic",
 	Finish = "Finish",
+	WindZone = "WindZone",
 })
