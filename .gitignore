@@ -23,4 +23,7 @@ ServerPackages/
 *.fbx
 *.obj
 
+# Local concept art and its prompts (AI-generated references, not game assets)
+concept-art/
+
 .DS_Store
